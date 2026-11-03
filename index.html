@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Sucessão Apostólica — Mantus Christi</title>
+    <meta name="description" content="Edição de lançamento da Mantus Christi: a camisa Sucessão Apostólica. De Pedro a Leão XIV, dois mil anos numa só linha." />
+    <meta name="theme-color" content="#15040b" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sucessão Apostólica — Mantus Christi" />
+    <meta property="og:description" content="De Pedro a Leão XIV. Dois mil anos numa só linha. Edição de lançamento." />
+    <meta property="og:image" content="/assets/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <!-- Abertura: contagem em algarismos romanos até CCLXVII (Leão XIV, o 267º papa) -->
+    <div class="loader" id="loader" aria-hidden="true">
+      <div class="loader__inner">
+        <div class="loader__logo" data-svg="logo-stacked"></div>
+        <div class="loader__count"><span class="loader__label">Nº</span><span class="loader__roman" id="loaderRoman">I</span></div>
+        <div class="loader__bar"><i id="loaderBar"></i></div>
+        <p class="loader__caption">De Pedro a Leão XIV</p>
+      </div>
+      <div class="loader__curtain loader__curtain--top"></div>
+      <div class="loader__curtain loader__curtain--bottom"></div>
+    </div>
+
+    <!-- Camada de fundo (atrás da camisa) -->
+    <div class="backdrop" aria-hidden="true">
+      <div class="backdrop__glow"></div>
+      <div class="backdrop__word" id="backdropWord"><span>SUCESSÃO</span></div>
+    </div>
+
+    <canvas class="gl" id="gl" aria-hidden="true"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <div class="cursor" id="cursor" aria-hidden="true">
+      <div class="cursor__ring"><span class="cursor__label" id="cursorLabel"></span></div>
+      <div class="cursor__dot"></div>
+    </div>
+    <div class="medal-tip" id="medalTip" aria-hidden="true"><b></b><span></span></div>
+
+    <header class="topbar">
+      <a class="topbar__logo" href="#top" aria-label="Mantus Christi — voltar ao início" data-svg="logo-line"></a>
+      <p class="topbar__edition"><span>Edição de lançamento</span><b>Sucessão Apostólica</b></p>
+      <a class="btn btn--small" href="#drop" data-magnetic>Garantir a minha</a>
+    </header>
+
+    <main id="main">
+      <!-- 1. Abertura -->
+      <section class="hero" id="top" data-section="hero">
+        <div class="hero__top">
+          <p class="eyebrow"><span>Mantus Christi apresenta</span></p>
+          <p class="hero__edition">Edição de lançamento · <span>Uma camisa. Uma edição.</span></p>
+        </div>
+        <h1 class="hero__title">
+          <span class="sr-only">Sucessão Apostólica — </span>
+          <span class="hero__script" aria-hidden="true">Apostólica</span>
+        </h1>
+        <div class="hero__bottom">
+          <p class="hero__lede">De Pedro a Leão XIV.<br />Dois mil anos numa só linha.</p>
+          <div class="hero__scroll"><span>Role para virar a camisa</span><i></i></div>
+        </div>
+        <p class="drag-hint" id="dragHint"><span>‹</span> arraste para girar <span>›</span></p>
+        <div class="seal seal--hero" data-svg="seal" aria-hidden="true"></div>
+      </section>
+
+      <!-- 2. A camisa vira -->
+      <section class="turn" data-section="turn">
+        <div class="turn__copy">
+          <p class="eyebrow"><span>Vire a camisa</span></p>
+          <h2 class="display" data-split>Nas costas,<br /><em>a linha inteira.</em></h2>
+          <p class="body" data-reveal>
+            Dez papas — do pescador da Galileia ao sucessor de hoje — ligados por um só ramo, como a videira do Evangelho:
+            <q>Eu sou a videira; vós, os ramos.</q> <cite>Jo 15,5</cite>
+          </p>
+          <p class="turn__hint" data-reveal>Toque nos medalhões das costas para conhecer cada um.</p>
+        </div>
+      </section>
+
+      <!-- 3. A sucessão, medalhão por medalhão -->
+      <section class="succession" id="sucessao" data-section="succession">
+        <div class="succession__sticky">
+          <div class="succession__shade" aria-hidden="true"></div>
+          <div class="succession__intro" id="succIntro">
+            <p class="eyebrow"><span>Mt 16,18</span></p>
+            <blockquote class="display">“Tu és Pedro, e sobre esta pedra <em>edificarei a minha Igreja.</em>”</blockquote>
+            <p class="body">Desde então, a cadeira de Pedro nunca ficou sem herdeiro. Role e percorra a linha.</p>
+          </div>
+          <div class="popes" id="popes"></div>
+          <nav class="rail" id="rail" aria-label="Linha da sucessão">
+            <svg class="rail__vine" viewBox="0 0 20 400" preserveAspectRatio="none" aria-hidden="true">
+              <path class="rail__track" d="M10 0 C 16 40, 4 80, 10 120 S 16 200, 10 240 S 4 320, 10 400" />
+              <path class="rail__grow" id="railGrow" d="M10 0 C 16 40, 4 80, 10 120 S 16 200, 10 240 S 4 320, 10 400" />
+            </svg>
+            <ol class="rail__list" id="railList"></ol>
+          </nav>
+        </div>
+      </section>
+
+      <!-- 4. A frente: o Credo -->
+      <section class="creed" id="credo" data-section="creed">
+        <div class="creed__sticky">
+          <div class="creed__copy">
+            <p class="eyebrow"><span>Na frente, o Credo</span></p>
+            <p class="creed__latin">Credo in unam, sanctam, catholicam et apostolicam Ecclesiam.</p>
+            <ol class="creed__words" id="creedWords"></ol>
+            <p class="creed__src">Símbolo Niceno-Constantinopolitano, ano 381</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track" id="marquee"></div>
+      </div>
+
+      <!-- 5. A peça (foto) -->
+      <section class="real" id="peca" data-section="real">
+        <div class="real__head">
+          <p class="eyebrow"><span>A peça</span></p>
+          <h2 class="display" data-split>Frente <em>e</em> costas.</h2>
+        </div>
+        <figure class="loupe" id="loupe">
+          <img src="/assets/mockup-2400.webp" srcset="/assets/mockup-1200.webp 1200w, /assets/mockup-2400.webp 2400w" sizes="(max-width: 900px) 100vw, 80vw" width="2400" height="1743" loading="lazy" decoding="async" alt="Camisa vinho Sucessão Apostólica: na frente, “Una, Santa, Católica, Apostólica”; nas costas, os dez papas de Pedro a Leão XIV ligados por um ramo dourado." />
+          <div class="loupe__lens" id="loupeLens" aria-hidden="true"></div>
+          <figcaption>Passe o cursor sobre a foto para ver de perto</figcaption>
+        </figure>
+        <dl class="specs">
+          <div><dt>Cor</dt><dd id="specColor">Vinho</dd></div>
+          <div><dt>Frente</dt><dd>Una · Santa · <b>Católica</b> · Apostólica</dd></div>
+          <div><dt>Costas</dt><dd>Sucessão Apostólica — de Pedro a Leão XIV</dd></div>
+          <div><dt>Edição</dt><dd>De lançamento</dd></div>
+        </dl>
+      </section>
+
+      <!-- 6. Garantir -->
+      <section class="drop" id="drop" data-section="drop">
+        <div class="drop__copy">
+          <p class="eyebrow"><span>Edição de lançamento</span></p>
+          <h2 class="display" data-split>Sucessão<br /><em>Apostólica</em></h2>
+          <p class="drop__price" id="price" hidden></p>
+          <fieldset class="sizes">
+            <legend>Escolha o tamanho</legend>
+            <div class="sizes__list" id="sizes"></div>
+          </fieldset>
+          <a class="btn btn--big" id="buy" href="#drop" data-magnetic><span>Garantir a minha</span><i aria-hidden="true">→</i></a>
+          <p class="drop__contact" id="buyContact"></p>
+          <p class="drop__note" id="buyNote">Uma camisa por vez. Cada edição, uma história.</p>
+        </div>
+        <p class="drag-hint drag-hint--drop"><span>‹</span> arraste para girar <span>›</span></p>
+      </section>
+
+      <footer class="footer">
+        <div class="footer__seal" data-svg="seal" aria-hidden="true"></div>
+        <div class="footer__logo" data-svg="logo-stacked" role="img" aria-label="Mantus Christi"></div>
+        <p class="footer__next">Próxima edição: <em>em breve.</em></p>
+        <nav class="footer__nav">
+          <a href="#top">Início</a>
+          <a href="#sucessao">A sucessão</a>
+          <a href="#credo">O Credo</a>
+          <a href="#drop">Garantir</a>
+          <a id="instagram" href="#" target="_blank" rel="noopener" hidden>Instagram</a>
+        </nav>
+        <p class="footer__legal">© <span id="year">2026</span> Mantus Christi</p>
+      </footer>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.vite/
+*.log
+.DS_Store
+
+# arte original da edição (PDF do Illustrator, mockup, pranchas): fica só no computador,
+# o repositório é público. O site usa as versões otimizadas em public/ e src/assets/.
+/*.pdf
+/*.ai
+/*.psd
+/*.jpg
+/*.jpeg
+/*.png
+
+# configuração local de ferramentas
+.claude/
