@@ -32,27 +32,23 @@ npm run dev
 
 Abra o endereço que aparecer (normalmente `http://localhost:5173`).
 
-## Colocar no ar
+## No ar
+
+O site está publicado na Vercel: **<https://mantuschristi.vercel.app>**
+
+Para atualizar, basta enviar as mudanças para o repositório no GitHub. Se o projeto da
+Vercel estiver ligado ao repositório, ela gera e publica a nova versão sozinha.
+
+> **Domínio próprio:** se o site ganhar um domínio (ex.: `mantuschristi.com.br`), troque
+> `mantuschristi.vercel.app` pelas novas linhas de compartilhamento no topo do `index.html`
+> (`canonical`, `og:url`, `og:image` e `twitter:image`). É isso que faz a foto da camisa
+> aparecer quando o link é compartilhado no WhatsApp e no Instagram.
+
+Para gerar a versão de produção no computador (pasta **`dist/`**):
 
 ```bash
 npm run build
 ```
-
-Isso gera a pasta **`dist/`** — é ela que vai para a internet. Duas opções fáceis:
-
-**Netlify (arrastar e soltar, sem conta de GitHub):**
-1. Entre em <https://app.netlify.com/drop>.
-2. Arraste a pasta `dist` para a página.
-3. Pronto: ele mostra o link do site. Em *Domain settings* dá para ligar um domínio próprio.
-
-**Vercel (atualiza sozinho a cada mudança):**
-1. Suba esta pasta para um repositório no GitHub.
-2. Em <https://vercel.com/new>, importe o repositório.
-3. Ele detecta "Vite" sozinho (build: `npm run build`, pasta: `dist`). Clique em *Deploy*.
-
-> Depois de ter o domínio definitivo, troque em `index.html` a linha
-> `og:image` para o endereço completo (ex.: `https://seudominio.com.br/assets/og-image.jpg`).
-> Isso faz a imagem aparecer quando o link for compartilhado no WhatsApp/Instagram.
 
 ---
 
